@@ -21,12 +21,6 @@ export type IGenericErrorMessage = {
   message: string;
 };
 
-export interface Name {
-  firstName: string;
-  lastName: string;
-  middleName: string;
-}
-
 export interface IUser {
   id: number;
   first_name: string;
