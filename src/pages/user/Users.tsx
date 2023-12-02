@@ -18,17 +18,31 @@ const Users = () => {
   const { Option } = Select;
 
   const [page, setPage] = useState(1);
-  const [size, setSize] = useState(10);
+  const [size, setSize] = useState(20);
   const [sortBy, setSortBy] = useState("");
   const [sortOrder, setSortOrder] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [visible, setVisible] = useState(false);
+  const [domain, setDomain] = useState<string>("");
+  const [gender, setGender] = useState<string>("");
+  const [availability, setAvailability] = useState<boolean>();
 
   query["page"] = page;
   query["limit"] = size;
   query["sortBy"] = sortBy;
   query["sortOrder"] = sortOrder;
   query["searchTerm"] = searchTerm;
+  if (domain) {
+    query["domain"] = domain;
+  }
+
+  if (gender) {
+    query["gender"] = gender;
+  }
+
+  if (availability) {
+    query["available"] = availability;
+  }
 
   const debouncedTerm = useDebounced({
     searchQuery: searchTerm,
@@ -50,6 +64,16 @@ const Users = () => {
   const allUsers = data?.users || [];
   const meta = data?.meta;
 
+  const uniqueDomains = Array.from(
+    new Set(allUsers.map((user) => user.domain))
+  );
+  const uniqueGenders = Array.from(
+    new Set(allUsers.map((user) => user.gender))
+  );
+  // const uniqueAvailabilities = Array.from(
+  //   new Set(allUsers.map((user) => user.available))
+  // );
+
   const handleSearch = (value: any) => {
     setSearchTerm(value);
   };
@@ -67,6 +91,21 @@ const Users = () => {
     setPage(current);
   };
 
+  const handleDomainChange = (value: string) => {
+    setDomain(value);
+    setPage(1); // Reset page when  changes
+  };
+
+  const handleGenderChange = (value: string) => {
+    setGender(value);
+    setPage(1); // Reset page when  changes
+  };
+
+  const handleAvailabilityChange = (value: boolean) => {
+    setAvailability(value);
+    setPage(1); // Reset page when  changes
+  };
+
   const handleClose = () => {
     setVisible(false); // Close the popover
   };
@@ -75,7 +114,10 @@ const Users = () => {
     setSortBy("");
     setSortOrder("");
     setSearchTerm("");
-    setPage(1); // Reset the page to 1
+    setPage(1);
+    setAvailability(undefined);
+    setDomain("");
+    setGender("");
     form.setFieldsValue({
       sortBy: "",
       sortOrder: "",
@@ -117,6 +159,44 @@ const Users = () => {
             <Option value="asc">Ascending</Option>
             <Option value="desc">Descending</Option>
           </Select>
+          <p>Select Domain</p>
+          <Select
+            style={{ width: "100%", margin: "8px 0" }}
+            placeholder="Domain"
+            onChange={handleDomainChange}
+            value={domain}
+          >
+            {uniqueDomains.map((domainOption) => (
+              <Option key={domainOption} value={domainOption}>
+                {domainOption}
+              </Option>
+            ))}
+          </Select>
+
+          <p>Select Gender</p>
+          <Select
+            style={{ width: "100%", margin: "8px 0" }}
+            placeholder="Gender"
+            onChange={handleGenderChange}
+            value={gender}
+          >
+            {uniqueGenders.map((genderOption) => (
+              <Option key={genderOption} value={genderOption}>
+                {genderOption}
+              </Option>
+            ))}
+          </Select>
+
+          <p>Select Availability</p>
+          <Select
+            style={{ width: "100%", margin: "8px 0" }}
+            onChange={handleAvailabilityChange}
+            value={availability}
+          >
+            <Option value="true">Available</Option>
+            <Option value="false">Not Available</Option>
+          </Select>
+
           <Button
             type="primary"
             style={{ width: "100%", margin: "8px 0" }}
