@@ -7,12 +7,10 @@ interface UsersListProps {
 
 const UsersList: React.FC<UsersListProps> = ({ users }) => {
   return (
-    <div className="flex flex-wrap">
-      {users.map((user) => (
-        <div key={user.id} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4">
-          <UserCard user={user} />
-        </div>
-      ))}
+    <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-x-5 gap-y-5">
+      {users?.map((user) => {
+        return <UserCard key={user.id} user={user} />;
+      })}
     </div>
   );
 };

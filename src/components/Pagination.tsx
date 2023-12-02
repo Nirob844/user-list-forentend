@@ -1,31 +1,40 @@
-interface PaginationProps {
-  currentPage: number;
-  totalPages: number;
+import { Pagination as AntPagination } from "antd";
+import React from "react";
+
+interface CustomPaginationProps {
+  current: number;
+  total: number;
+  pageSize: number;
   onPageChange: (page: number) => void;
+  onPageSizeChange: (pageSize: number, page: number) => void;
 }
 
-const Pagination: React.FC<PaginationProps> = ({
-  currentPage,
-  totalPages,
+const CustomPagination: React.FC<CustomPaginationProps> = ({
+  current,
+  total,
+  pageSize,
   onPageChange,
+  onPageSizeChange,
 }) => {
-  const pageItems = [];
+  const handlePageChange = (page: number) => {
+    onPageChange(page);
+  };
 
-  for (let i = 1; i <= totalPages; i++) {
-    pageItems.push(
-      <button
-        key={i}
-        className={`px-3 py-2 mx-1 focus:outline-none ${
-          i === currentPage ? "bg-blue-500 text-white" : "bg-gray-300"
-        }`}
-        onClick={() => onPageChange(i)}
-      >
-        {i}
-      </button>
-    );
-  }
+  const handlePageSizeChange = (current: number, size: number) => {
+    onPageSizeChange(size, current);
+  };
 
-  return <div className="flex">{pageItems}</div>;
+  return (
+    <AntPagination
+      current={current}
+      total={total}
+      pageSize={pageSize}
+      onChange={handlePageChange}
+      showSizeChanger={true}
+      onShowSizeChange={handlePageSizeChange}
+      showTotal={(total, range) => `${range[0]}-${range[1]} of ${total} items`}
+    />
+  );
 };
 
-export default Pagination;
+export default CustomPagination;

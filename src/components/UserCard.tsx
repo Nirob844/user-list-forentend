@@ -1,23 +1,55 @@
+import { Card, Tag, Typography } from "antd";
+import React from "react";
 import { IUser } from "../types";
 
 interface UserCardProps {
   user: IUser;
 }
 
+const { Meta } = Card;
+const { Text } = Typography;
+
 const UserCard: React.FC<UserCardProps> = ({ user }) => {
   return (
-    <div className="max-w-sm rounded overflow-hidden shadow-lg m-4">
-      <img
-        className="w-full"
-        src={user.avatar}
-        alt={`${user.first_name} ${user.last_name}`}
+    <Card
+      hoverable
+      style={{ width: 250, height: 350 }}
+      cover={
+        <img
+          alt="User Image"
+          src={user.avatar}
+          style={{ borderRadius: "10px 10px 0 0", height: "200px" }}
+        />
+      }
+    >
+      <Meta
+        title={
+          <span
+            style={{ textDecoration: "none" }}
+          >{`${user.first_name} ${user.last_name}`}</span>
+        }
+        description={
+          <>
+            <Text strong style={{ textDecoration: "none" }}>
+              Email:
+            </Text>{" "}
+            {user.email}
+            <br />
+            <Text strong style={{ textDecoration: "none" }}>
+              Gender:
+            </Text>{" "}
+            {user.gender}
+            <br />
+            <Text strong style={{ textDecoration: "none" }}>
+              Availability:
+            </Text>
+            <Tag color={user.available ? "success" : "error"}>
+              {user.available ? "Available" : "Not Available"}
+            </Tag>
+          </>
+        }
       />
-      <div className="px-6 py-4">
-        <div className="font-bold text-xl mb-2">{`${user.first_name} ${user.last_name}`}</div>
-        <p className="text-gray-700 text-base">Email: {user.email}</p>
-        {/* Add other user details as needed */}
-      </div>
-    </div>
+    </Card>
   );
 };
 
