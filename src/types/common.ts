@@ -22,6 +22,7 @@ export type IGenericErrorMessage = {
 };
 
 export interface IUser {
+  _id: string;
   id: number;
   first_name: string;
   last_name: string;
@@ -30,4 +31,8 @@ export interface IUser {
   avatar: string;
   domain: string;
   available: boolean;
+}
+export interface ITeam {
+  name: string;
+  users: string[]; // User IDs
 }

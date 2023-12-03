@@ -1,9 +1,9 @@
-import Users from "../user/Users";
+import Banner from "../../components/Banner";
 
 const Home = () => {
   return (
     <div>
-      <Users />
+      <Banner />
     </div>
   );
 };

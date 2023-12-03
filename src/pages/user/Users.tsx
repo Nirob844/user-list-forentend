@@ -70,9 +70,6 @@ const Users = () => {
   const uniqueGenders = Array.from(
     new Set(allUsers.map((user) => user.gender))
   );
-  // const uniqueAvailabilities = Array.from(
-  //   new Set(allUsers.map((user) => user.available))
-  // );
 
   const handleSearch = (value: any) => {
     setSearchTerm(value);
@@ -225,14 +222,6 @@ const Users = () => {
 
   return (
     <div className="m-10">
-      {/* <UmBreadCrumb
-        items={[
-          {
-            label: "Home",
-            link: "/",
-          },
-        ]}
-      /> */}
       <h1 className="mb-2 text-center">All Users</h1>
       <div className="flex flex-wrap items-center m-5">
         <Input.Search
