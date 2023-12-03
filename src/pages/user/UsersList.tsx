@@ -1,4 +1,4 @@
-import { IUser } from "../types";
+import { IUser } from "../../types";
 import UserCard from "./UserCard";
 
 interface UsersListProps {

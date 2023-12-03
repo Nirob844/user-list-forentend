@@ -10,9 +10,9 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Loading from "../../components/Loading";
 import CustomPagination from "../../components/Pagination";
-import UsersList from "../../components/UsersList";
 import { useUsersQuery } from "../../redux/api/userApi";
 import { useDebounced } from "../../redux/hooks";
+import UsersList from "./UsersList";
 
 const Users = () => {
   const query: Record<string, any> = {};

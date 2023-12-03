@@ -1,10 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
 import TeamCreate from "../components/TeamCreate";
-import TeamDetailsPage from "../components/TeamDetailsPage";
 import UserCreatte from "../components/UserCreatte";
 import Home from "../pages/Home/Home";
 import Team from "../pages/team/Team";
+import TeamDetailsPage from "../pages/team/TeamDetailsPage";
 import Users from "../pages/user/Users";
 
 export const router = createBrowserRouter([

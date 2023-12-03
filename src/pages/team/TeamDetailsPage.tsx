@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-// TeamDetailsPage.tsx
 
 import { Avatar, Card, List } from "antd";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useTeamQuery } from "../redux/api/teamApi";
+import { useTeamQuery } from "../../redux/api/teamApi";
 
 const TeamDetailsPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
