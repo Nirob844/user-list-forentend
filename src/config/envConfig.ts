@@ -1,3 +1,3 @@
 export const getBaseUrl = (): string => {
-  return "http://localhost:5000/api";
+  return "https://user-list-backend.vercel.app/api";
 };
