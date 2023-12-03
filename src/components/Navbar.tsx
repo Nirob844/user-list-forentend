@@ -49,7 +49,7 @@ const Navbar = () => {
           }}
         >
           <HomeOutlined />
-          <span style={{ marginLeft: "8px" }}>UserList</span>
+          <span style={{ marginLeft: "8px" }}>Home</span>
         </Link>
         <Link
           to="/users"

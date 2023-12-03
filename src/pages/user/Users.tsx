@@ -2,10 +2,12 @@
 import {
   CloseCircleOutlined,
   FilterOutlined,
+  PlusOutlined,
   ReloadOutlined,
 } from "@ant-design/icons";
 import { Button, Form, Input, Popover, Select } from "antd";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Loading from "../../components/Loading";
 import CustomPagination from "../../components/Pagination";
 import UsersList from "../../components/UsersList";
@@ -222,7 +224,14 @@ const Users = () => {
 
   return (
     <div className="m-10">
-      <h1 className="mb-2 text-center">All Users</h1>
+      <div className="flex justify-between">
+        <h1 className="text-3xl font-bold mb-8">All Users</h1>
+        <Link to="/create-user">
+          <Button type="primary" className="mr-20" icon={<PlusOutlined />}>
+            Create User
+          </Button>
+        </Link>
+      </div>
       <div className="flex flex-wrap items-center m-5">
         <Input.Search
           className="w-full sm:w-1/2 md:w-3/4 lg:w-5/6 mb-3 sm:mb-0"

@@ -23,7 +23,7 @@ const TeamDetailsPage: React.FC = () => {
   }
 
   return (
-    <div>
+    <div className="w-[50%] mx-auto my-20">
       <h1>Team Details: {team.name}</h1>
       <Card>
         <List

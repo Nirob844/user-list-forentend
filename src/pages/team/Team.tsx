@@ -24,16 +24,21 @@ const Team = () => {
           </Button>
         </Link>
       </div>
-
       <List
-        grid={{ gutter: 16, column: 4 }}
+        grid={{
+          gutter: 16,
+          xs: 1,
+          sm: 2,
+          md: 3,
+          lg: 4,
+        }}
         dataSource={teams}
         renderItem={(team: any) => (
           <List.Item>
             <Link to={`/teams/${team._id}`}>
               <Card
                 hoverable
-                className="w-64 h-80 border rounded-md overflow-hidden shadow-md transition-transform transform hover:scale-105"
+                className="mx-10 w-64 h-80 border rounded-md overflow-hidden shadow-md transition-transform transform hover:scale-105"
                 title={team.name}
                 extra={<Link to={`/teams/${team._id}`}>Details</Link>}
               >

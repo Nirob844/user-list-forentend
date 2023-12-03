@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
 import TeamCreate from "../components/TeamCreate";
 import TeamDetailsPage from "../components/TeamDetailsPage";
+import UserCreatte from "../components/UserCreatte";
 import Home from "../pages/Home/Home";
 import Team from "../pages/team/Team";
 import Users from "../pages/user/Users";
@@ -18,6 +19,10 @@ export const router = createBrowserRouter([
       {
         path: "/users",
         element: <Users></Users>,
+      },
+      {
+        path: "/create-user",
+        element: <UserCreatte></UserCreatte>,
       },
       {
         path: "/teams",
